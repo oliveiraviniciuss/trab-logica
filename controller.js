@@ -5,7 +5,7 @@ let numero_conectivos;
 let numero_coluna_auxiliar;
 let numero_linha_auxiliar;
 
-let matriz;
+let matriz;////
 let simbolos_cabecalho= [];
 
 function calcula_tamanho_tabela(){
