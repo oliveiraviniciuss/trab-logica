@@ -3,7 +3,7 @@ let numero_linhas;
 let numero_simbolos;
 let numero_conectivos;
 
-let matriz;
+let matriz;////
 let simbolos_cabecalho= [];
 
 function calcula_tamanho_tabela(){
