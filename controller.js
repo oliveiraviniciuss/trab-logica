@@ -81,7 +81,7 @@ function gera_formula_normal_disjuntiva(){
     let linhas_true = [];
 
     for(let i = 0; i < numero_linhas; i++){
-        if(matriz[i][numero_colunas-1] === 'v'){
+        if(matriz[i][numero_colunas-1].toLowerCase() === 'v'){
             linhas_true.push(i)
         }
     }
@@ -97,7 +97,7 @@ function gera_formula_normal_disjuntiva(){
             if(j > 0)
                 formula += ' ^ ';
 
-            if(matriz[i][j] === 'v')        
+            if(matriz[i][j].toLowerCase() === 'v')        
                 formula += `${$(`#${j}`)[0].innerHTML}`; 
             else
                 formula += `¬${$(`#${j}`)[0].innerHTML}`;
