@@ -176,8 +176,6 @@ function gera_formula_normal_disjuntiva(){
         if(matriz[i][numero_colunas-1].toLowerCase() === 'v'){
             linhas_true.push(i)
         }
-        alert(matriz[i][numero_colunas-1].toLowerCase());
-
     }
 
     let formula = '';
