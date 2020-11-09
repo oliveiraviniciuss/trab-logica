@@ -15,10 +15,8 @@ function calcula_tamanho_tabela(){
     }
     numero_simbolos = $('#simbolos').val() 
     numero_conectivos = $('#conectivos').val()
-    numero_linhas = 2 ** numero_simbolos;
+    numero_linhas = 2 ** parseInt(numero_simbolos);
     numero_colunas = parseInt(numero_simbolos) + parseInt(numero_conectivos); 
-    numero_coluna_auxiliar = numero_simbolos;
-    numero_linha_auxiliar = numero_linhas;
     desenha_head_tabela(numero_colunas)
     desenha_linhas_tabela(numero_linhas, numero_colunas)
 }
@@ -44,8 +42,9 @@ function desenha_linhas_tabela(numero_linhas, numero_colunas){
         }
         $("#table").append(linha + "</tr>");
 
-        escreve_entradas_iniciais_tabela()
     }
+    escreve_entradas_iniciais_tabela()
+
     
 }
 
@@ -109,9 +108,9 @@ function gera_formula_normal_disjuntiva(){
 }
 
 function escreve_entradas_iniciais_tabela(){
-    for (let x = 0; o < numero_linha_auxiliar; i++){
-        for (let j = 0; j < numero_coluna_auxiliar; j++){
-            
+    for (let i = 0 ; i< numero_linhas ; i++) {
+        for (let j = (parseInt(numero_simbolos) - 1), auxiliar = 0 ; j >= 0 ; j--, auxiliar++) {
+          $(`#${i}${auxiliar}`).html(parseInt((i/parseInt(Math.pow(2, j)))%2) ? "F" : "V")
         }
-    }
+      }
 }
