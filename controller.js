@@ -5,7 +5,7 @@ let numero_conectivos;
 let numero_coluna_auxiliar;
 let numero_linha_auxiliar;
 
-let matriz;////
+let matriz;
 let simbolos_cabecalho= [];
 
 function calcula_tamanho_tabela(){
@@ -80,12 +80,11 @@ function gera_formula_normal_disjuntiva(){
     
     let linhas_true = [];
 
-    for(let i = 0; i < numero_colunas; i++){
-        if(matriz[i][numero_colunas-1].toLowerCase() === 'v'){
+    for(let i = 0; i < numero_linhas; i++){
+        if(matriz[i][numero_colunas-1] === 'v'){
             linhas_true.push(i)
         }
     }
-    console.log(linhas_true);
 
     let formula = '';
 
@@ -95,14 +94,24 @@ function gera_formula_normal_disjuntiva(){
 
         for(let j = 0; j < numero_simbolos; j++){
 
-            if(matriz[i][j] === 'TRUE')        
-                formula += ` ^ ${matriz[i][j]}` 
+            if(j > 0)
+                formula += ' ^ ';
+
+            if(matriz[i][j] === 'v')        
+                formula += `${$(`#${j}`)[0].innerHTML}`; 
             else
-                formula += `^ X${matriz[i][j]}`;
+                formula += `¬${$(`#${j}`)[0].innerHTML}`;
         }
 
-        formula += ' ) V';
+        formula += ' ) ';
+
+        if(i < (linhas_true.length -1 ))
+            formula += 'V ';
+
     }
+
+
+    $("#formula_normal_disjuntiva").append(`<input type="text" id="formula_normal_disjuntiva" name="line" value= '${formula}'>`);
 
     console.log(formula)
 }
