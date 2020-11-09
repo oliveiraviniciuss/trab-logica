@@ -197,7 +197,7 @@ function gera_formula_normal_disjuntiva(){
 
         formula += ' ) ';
 
-        if(i < (linhas_true.length -1 ))
+        if(i !== (linhas_true[linhas_true.length-1]))
             formula += 'V ';
 
     }
@@ -210,24 +210,24 @@ function gera_formula_normal_disjuntiva(){
 
 function gera_formula_normal_conjuntiva(){
     
-    let linhas_true = [];
+    let linhas_false = [];
 
     for(let i = 0; i < numero_linhas; i++){
         if(matriz[i][numero_colunas-1].toLowerCase() === 'f'){
-            linhas_true.push(i)
+            linhas_false.push(i)
         }
     }
 
     let formula = '';
 
-    for(let i of linhas_true){
+    for(let i of linhas_false){
 
         formula+= '( ';
 
         for(let j = 0; j < numero_simbolos; j++){
 
             if(j > 0)
-                formula += ' ^ ';
+                formula += ' V ';
 
             if(matriz[i][j].toLowerCase() === 'f')        
                 formula += `${$(`#${j}`)[0].innerHTML.trim()}`; 
@@ -237,7 +237,7 @@ function gera_formula_normal_conjuntiva(){
 
         formula += ' ) ';
 
-        if(i < (linhas_true.length -1 ))
+        if(i !== (linhas_false[linhas_false.length-1]))
             formula += '^ ';
 
     }
