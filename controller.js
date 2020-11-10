@@ -90,7 +90,7 @@ function desenha_linhas_tabela(numero_linhas, numero_colunas){
     for(let i = 0; i < numero_linhas; i++){
         linha = "<tr>";
         for(let j = 0; j < numero_colunas; j++){
-            linha += `<td contenteditable='true' id= "${i}${j}"> TESTE ${i}${j}</td>`;
+            linha += `<td contenteditable='true' id= "${i}${j}"></td>`;
         }
         $("#table").append(linha + "</tr>");
 
@@ -111,7 +111,6 @@ function converte_tabela_html_em_matriz()
     for(let i = 0; i < numero_linhas; i++){
         for(let j = 0; j < numero_colunas; j++){
             
-            // matriz[i][j] =   j === (numero_colunas - 1) ? 'TRUE' : $(`#${i}${j}`)[0].innerHTML
             matriz[i][j] =  $(`#${i}${j}`)[0].innerHTML.trim();
 
         }
@@ -127,6 +126,8 @@ function converte_tabela_html_em_matriz()
 }
 
 function gera_formulas_normais(){
+
+    converte_tabela_html_em_matriz();
 
     //Verifica se existe funcao gerada
     if (funcao_gerada == true)
