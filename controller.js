@@ -99,7 +99,7 @@ function desenha_tabela(numero_linhas, numero_colunas){
     // gera os Vs e Fs nas colunas dos símbolos
     for (let i = 0 ; i< numero_linhas ; i++) {
         for (let j = (parseInt(numero_simbolos) - 1), auxiliar = 0 ; j >= 0 ; j--, auxiliar++) {
-            $(`#${i}${auxiliar}`).html(parseInt((i/parseInt(Math.pow(2, j)))%2) ? "F" : "V")
+            $(`#${i}${auxiliar}`).html(parseInt((i/parseInt(Math.pow(2, j)))%2) ? "F" : "T")
         }
     }
     
@@ -158,9 +158,9 @@ function gera_formulas_normais(){
                 return;
             }
 
-            if (matriz[i][j].toLowerCase() !== 'v' && matriz[i][j].toLowerCase() !== 'f' )
+            if (matriz[i][j].toLowerCase() !== 't' && matriz[i][j].toLowerCase() !== 'f' )
             {
-                alert('Por favor, preencha a tabela com somente "v", "V", "f" ou "F" unicamente em cada célula!')
+                alert('Por favor, preencha a tabela com somente "t", "T", "f" ou "F" unicamente em cada célula!')
                 return;
             }
         }
@@ -179,7 +179,7 @@ function gera_formula_normal_disjuntiva(){
     let linhas_true = [];
 
     for(let i = 0; i < numero_linhas; i++){
-        if(matriz[i][numero_colunas-1].toLowerCase() === 'v'){
+        if(matriz[i][numero_colunas-1].toLowerCase() === 't'){
             linhas_true.push(i)
         }
     }
@@ -195,7 +195,7 @@ function gera_formula_normal_disjuntiva(){
             if(j > 0)
                 formula += ' ^ ';
 
-            if(matriz[i][j].toLowerCase() === 'v')        
+            if(matriz[i][j].toLowerCase() === 't')        
                 formula += `${$(`#${j}`)[0].innerHTML.trim()}`; 
             else
                 formula += `¬${$(`#${j}`)[0].innerHTML.trim()}`;
