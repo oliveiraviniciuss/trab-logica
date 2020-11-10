@@ -7,3 +7,27 @@ table th, td {
     height: 50px;
     display: inline-block;
 }
+
+body {
+  display: grid;
+  grid-template-areas:
+    "header header header"
+    "aside main main"
+    "footer footer footer";
+}
+
+.cabecalho {
+  grid-area: header;
+}
+
+.campos {
+  grid-area: aside;
+}
+
+.main_tabela {
+  grid-area: main;
+}
+
+.rodape {
+  grid-area: footer;
+}
