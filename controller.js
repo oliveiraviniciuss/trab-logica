@@ -56,16 +56,21 @@ function calcula_tamanho_tabela(){
     numero_colunas = parseInt(numero_simbolos) + parseInt(numero_conectivos); 
 
     //Desenha a matriz
-    desenha_head_tabela(numero_colunas)
-    desenha_linhas_tabela(numero_linhas, numero_colunas)
+    desenha_tabela(numero_linhas, numero_colunas)
 
     matriz_desenhada = true;
 }
 
-function desenha_head_tabela(numero_colunas){
-    
+
+
+function desenha_tabela(numero_linhas, numero_colunas){
+
+    $('#tabela_inicial').remove(); // remove a tabela inicial
+
     let linha;
     let letra_base = 65;
+
+    // monta o header da tabela
 
     for(let i = 0; i < numero_colunas; i++){
         if( i < numero_simbolos)
@@ -81,12 +86,7 @@ function desenha_head_tabela(numero_colunas){
     }
     $("#header").append(linha);
 
-}
-
-
-function desenha_linhas_tabela(numero_linhas, numero_colunas){
-    let linha;
-
+    // desenha as linhas da tabela
     for(let i = 0; i < numero_linhas; i++){
         linha = "<tr>";
         for(let j = 0; j < numero_colunas; j++){
@@ -95,8 +95,13 @@ function desenha_linhas_tabela(numero_linhas, numero_colunas){
         $("#table").append(linha + "</tr>");
 
     }
-    escreve_entradas_iniciais_tabela()
 
+    // gera os Vs e Fs nas colunas dos símbolos
+    for (let i = 0 ; i< numero_linhas ; i++) {
+        for (let j = (parseInt(numero_simbolos) - 1), auxiliar = 0 ; j >= 0 ; j--, auxiliar++) {
+            $(`#${i}${auxiliar}`).html(parseInt((i/parseInt(Math.pow(2, j)))%2) ? "F" : "V")
+        }
+    }
     
 }
 
@@ -249,10 +254,3 @@ function gera_formula_normal_conjuntiva(){
     console.log(formula)
 }
 
-function escreve_entradas_iniciais_tabela(){
-    for (let i = 0 ; i< numero_linhas ; i++) {
-        for (let j = (parseInt(numero_simbolos) - 1), auxiliar = 0 ; j >= 0 ; j--, auxiliar++) {
-          $(`#${i}${auxiliar}`).html(parseInt((i/parseInt(Math.pow(2, j)))%2) ? "F" : "V")
-        }
-      }
-}

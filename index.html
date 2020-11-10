@@ -23,7 +23,16 @@
         <label>Digite a quantidade de conectivos lógicos:</label><br>
         <input type="number" id="conectivos" name="col">    
         <br>
-        <button onclick="calcula_tamanho_tabela()">GERAR TABELA</button>
+        <button onclick="calcula_tamanho_tabela()">GERAR TABELA</button><br><br>
+
+
+        <label>Fórmula Disjuntiva:</label>
+        <div id="formula_normal_disjuntiva" >
+        </div>
+
+        <label>Fórmula Conjuntiva:</label>
+        <div id="formula_normal_conjuntiva" >
+        </div>
 
     </aside>
 
@@ -34,19 +43,28 @@
             </thead>    
         </table>
 
+        <table id= "tabela_inicial">
+          <tr>
+            <th>A</th>
+            <th>B</th>
+            <th>--</th>
+          </tr>
+          <tr>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+          </tr>
+        </table>
+
          <!-- <button onclick="converte_tabela_html_em_matriz()">GERAR MATRIZ</button> -->
         <br>
         <button onclick="gera_formulas_normais()">GERAR FÓRMULAS</button>
         
-
-        <label>Fórmula Disjuntiva:</label>
-        <div id="formula_normal_disjuntiva" >
-        </div>
-
-        <label>Fórmula Conjuntiva:</label>
-        <div id="formula_normal_conjuntiva" >
-        </div>
-
         <button onclick="limpar_tela()">LIMPAR TELA</button>
 
     </main>
