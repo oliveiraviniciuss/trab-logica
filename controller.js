@@ -68,7 +68,7 @@ function desenha_tabela(numero_linhas, numero_colunas){
     $('#tabela_inicial').remove(); // remove a tabela inicial
 
     let linha;
-    let letra_base = 65;
+    let letra_base = 80;
 
     // monta o header da tabela
 
@@ -209,7 +209,7 @@ function gera_formula_normal_disjuntiva(){
     }
 
 
-    $("#formula_normal_disjuntiva").append(`<input type="text" id="formula_normal_disjuntiva" name="line" value= '${formula}' readonly>`);
+    $("#formula_normal_disjuntiva").append(`<label> <b>${formula}</b> </label>`);
 
     console.log(formula)
 }
@@ -249,7 +249,7 @@ function gera_formula_normal_conjuntiva(){
     }
 
 
-    $("#formula_normal_conjuntiva").append(`<input type="text" id="formula_normal_conjuntiva" name="line" value= '${formula}' readonly>`);
+    $("#formula_normal_conjuntiva").append(`<label> <b>${formula}</b> </label>`);
 
     console.log(formula)
 }
