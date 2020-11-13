@@ -42,6 +42,12 @@ Projeto desenvolvido durante a Disciplina de Lógica para Computação no period
     <td align="center"><a href="https://github.com/oliveiraviniciuss"><img style="border-radius: 50%;" src="https://avatars2.githubusercontent.com/u/42152790?s=400&u=5fc8a6a89bfd02510b4528b5af7022d157d0f3f0&v=4" width="100px;" alt=""/><br /><sub><b>Vinícius de Oliveira</b></sub></a><br /></td>
     <td align="center"><a href="https://github.com/edds018"><img style="border-radius: 50%;" src="https://avatars0.githubusercontent.com/u/20283003?s=400&u=24d9b354295b193681be1bcad171885858e43394&v=4" width="100px;" alt=""/><br /><sub><b>Edson Neves</b></sub></a><br /></td>   
   </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/joaogs"><img style="border-radius: 50%;" src="https://avatars1.githubusercontent.com/u/25991168?s=400&u=917e61883c731388d423c3ab94b5256260d7a50d&v=4" width="100px;" alt=""/><br /><sub><b>João Simões</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/EoqLp"><img style="border-radius: 50%;" src="https://avatars2.githubusercontent.com/u/23413851?s=400&u=09cb131da4653d6e58a6885a99d1b239e84b8b3e&v=4" width="100px;" alt=""/><br /><sub><b>Felipe Rangel</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/Felcks"><img style="border-radius: 50%;" src="https://avatars0.githubusercontent.com/u/5620769?s=400&u=6e49ebf68e64115b6296912ab27a591b7b0a379e&v=4" width="100px;" alt=""/><br /><sub><b>Matheus Felipe</b></sub></a><br /></td>
+    <td align="center"><a/><br /></a><br /></td>   
+  </tr>
 </table>
 
 ## 💪 Como contribuir no projeto
