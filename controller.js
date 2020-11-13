@@ -55,9 +55,10 @@ function calcula_tamanho_tabela(){
     numero_linhas = 2 ** parseInt(numero_simbolos);
     numero_colunas = parseInt(numero_simbolos) + parseInt(numero_conectivos); 
 
+
     //Desenha a matriz
     desenha_tabela(numero_linhas, numero_colunas)
-
+    document.getElementById('main_tabela').style.display = 'block';
     matriz_desenhada = true;
 }
 
@@ -169,7 +170,8 @@ function gera_formulas_normais(){
 
     gera_formula_normal_disjuntiva();
     gera_formula_normal_conjuntiva();
-
+    document.getElementById('saida').style.display = 'block';
+    document.getElementById('entrada').style.display = 'none';
     funcao_gerada = true
 }
 
