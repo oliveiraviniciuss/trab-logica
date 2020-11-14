@@ -33,13 +33,17 @@ function gera_tabela(){
 
 function integracao(){
 
-    // pega o código back-end do Rafael
+    // pega o código back-end do grupo do Rafael
     const entrada = 
     [
-        {"P":false,"Q":false,"PvQ":false},
-        {"P":false,"Q":true,"PvQ":true},
-        {"P":true,"Q":false,"PvQ":true},
-        {"P":true,"Q":true,"PvQ":true}
+        {"P":true,"Q":true, "R":true, "(P->Q)": true, "(P->Q)^R":true},
+        {"P":true,"Q":true, "R":false, "(P->Q)": true, "(P->Q)^R":false},
+        {"P":true,"Q":false, "R":true, "(P->Q)": false, "(P->Q)^R":false},
+        {"P":true,"Q":false, "R":false, "(P->Q)": false, "(P->Q)^R":false},
+        {"P":false,"Q":true, "R":true, "(P->Q)": true, "(P->Q)^R":true},
+        {"P":false,"Q":true, "R":false, "(P->Q)": true, "(P->Q)^R":false},
+        {"P":false,"Q":false, "R":true, "(P->Q)": true, "(P->Q)^R":true},
+        {"P":false,"Q":false, "R":false, "(P->Q)": true, "(P->Q)^R":false}
     ];
 
     numero_linhas = entrada.length;
@@ -47,31 +51,26 @@ function integracao(){
     simbolos_cabecalho = Object.keys(entrada[0]);
 
     let n = numero_linhas;
-    //let numero_simbolos
+
     while(n != 1){
         n = n/2;
         numero_simbolos += 1;
     }
 
-    console.log('n simb -->', numero_simbolos);
-
-
     matriz = new Array(numero_linhas); 
-    for (let i = 0; i < numero_linhas; i++){ 
-        matriz[i] = new Array(numero_colunas);
-    }
-
     for(let i in entrada){
+        matriz[i] = new Array(numero_colunas);
         matriz[i] = Object.values(entrada[i]);
     }
 
     for(let i = 0; i < numero_linhas; i++){
         for(let j = 0; j < numero_colunas; j++){
-            
             matriz[i][j] =  matriz[i][j] === true ? 'T' : 'F';
         }
     }
 
+    console.log('SÍMBOLOS E SUBFÓRMULAS : ', simbolos_cabecalho); // valores que serão exibidos no header da tabela verdade
+    console.log('MATRIZ : ', matriz); // valores da tabela verdade
 }
 
 
@@ -177,7 +176,7 @@ function gera_formula_normal_disjuntiva(){
         formula += ' ) ';
 
         if(i !== (linhas_true[linhas_true.length-1]))
-            formula += 'V ';
+            formula += 'v ';
 
     }
 
@@ -206,7 +205,7 @@ function gera_formula_normal_conjuntiva(){
         for(let j = 0; j < numero_simbolos; j++){
 
             if(j > 0)
-                formula += ' V ';
+                formula += ' v ';
 
             if(matriz[i][j].toLowerCase() === 'f')        
                 formula += `${$(`#${j}`)[0].innerHTML.trim()}`; 
