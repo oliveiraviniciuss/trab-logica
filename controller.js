@@ -66,6 +66,8 @@ function calcula_tamanho_tabela(){
 
 function desenha_tabela(numero_linhas, numero_colunas){
 
+    integracao();
+
     $('#tabela_inicial').remove(); // remove a tabela inicial
 
     let linha;
@@ -130,6 +132,46 @@ function converte_tabela_html_em_matriz()
 
 
 }
+
+
+function integracao(){
+
+    const entrada = 
+    [
+        {"P":false,"Q":false,"PvQ":false},
+        {"P":false,"Q":true,"PvQ":true},
+        {"P":true,"Q":false,"PvQ":true},
+        {"P":true,"Q":true,"PvQ":true}
+    ];
+
+    numero_linhas = entrada.length;
+    numero_colunas =  Object.values(entrada[0]).length;
+    simbolos_cabecalho = Object.keys(entrada[0]);
+
+
+    matriz = new Array(numero_linhas); 
+    for (let i = 0; i < numero_linhas; i++){ 
+        matriz[i] = new Array(numero_colunas);
+    }
+
+    for(let i in entrada){
+        matriz[i] = Object.values(entrada[i]);
+    }
+    for(let i = 0; i < numero_linhas; i++){
+        for(let j = 0; j < numero_colunas; j++){
+            
+            matriz[i][j] =  matriz[i][j] === true ? 'T' : 'F';
+        }
+    }
+
+
+    console.log('matriz --->' , matriz)
+    console.log('simbolos cabecalho -->', simbolos_cabecalho);
+    console.log('n linhas', numero_linhas  );
+    console.log('n col ->', numero_colunas  );
+
+}
+
 
 function gera_formulas_normais(){
 
