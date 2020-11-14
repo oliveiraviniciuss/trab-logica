@@ -18,13 +18,10 @@
     
     <aside class="campos">
         <div class="entrada" id="entrada">
-            <label>Digite a quantidade de simbolos proposicionais:</label><br>
+            <label>Digite a expressão:</label><br>
             <input type="number" id="simbolos" name="line">
             <br>
-            <label>Digite a quantidade de conectivos proposicionais:</label><br>
-            <input type="number" id="conectivos" name="col">    
-            <br>  
-            <button class= "btn gera" onclick="calcula_tamanho_tabela()">GERAR TABELA</button><br><br>
+            <button class= "btn gera" onclick="gera_tabela()">GERAR TABELA</button><br><br>
         </div>
         <div class="saida" id="saida">
             <label>Fórmula Normal Disjuntiva (FND):</label>

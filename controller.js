@@ -2,7 +2,7 @@
 
 let numero_colunas; 
 let numero_linhas;
-let numero_simbolos;
+let numero_simbolos = 0;
 let numero_conectivos;
 let numero_coluna_auxiliar;
 let numero_linha_auxiliar;
@@ -20,122 +20,20 @@ function limpar_tela()
     return;
 }
 
-function calcula_tamanho_tabela(){
+function gera_tabela(){
 
-    //Verifica se existe matriz desenhada
-    if (matriz_desenhada == true)
-    {
-        return;
-    }
-
-    //Verifica valores zerados
-    if(document.getElementById("simbolos").value.length == 0 || document.getElementById("conectivos").value.length == 0)
-    {
-        alert("Por favor, preencha os valores!")
-        return;
-    }
-
-    //Captura valor dos campos
-    numero_simbolos = $('#simbolos').val() 
-    numero_conectivos = $('#conectivos').val()
-
-    //Verifica valores negativos
-    if(document.getElementById("simbolos").value < 0 || document.getElementById("conectivos").value < 0)
-    {
-        alert("Não são permitidos valores negativos!")
-        return;
-    }
-    else if(document.getElementById("simbolos").value == 0 || document.getElementById("conectivos").value == 0)
-    {
-        alert("Por favor, informe um número válido!")
-        return;
-    }
-
-    //Calcula o número de linhas e colunas da matriz
-    numero_linhas = 2 ** parseInt(numero_simbolos);
-    numero_colunas = parseInt(numero_simbolos) + parseInt(numero_conectivos); 
-
-
+    integracao();
+  
     //Desenha a matriz
-    desenha_tabela(numero_linhas, numero_colunas)
+    desenha_tabela()
     document.getElementById('main_tabela').style.display = 'block';
     matriz_desenhada = true;
 }
 
 
-
-function desenha_tabela(numero_linhas, numero_colunas){
-
-    integracao();
-
-    $('#tabela_inicial').remove(); // remove a tabela inicial
-
-    let linha;
-    let letra_base = 80;
-
-    // monta o header da tabela
-
-    for(let i = 0; i < numero_colunas; i++){
-        if( i < numero_simbolos)
-        {
-            linha += `<th contenteditable='true' id ="${i}">${String.fromCharCode(letra_base)}</th>`;
-            letra_base ++;
-        }
-        else
-        {
-            linha += `<th contenteditable='true' id ="${i}"></th>`;
-        }
-        
-    }
-    $("#header").append(linha);
-
-    // desenha as linhas da tabela
-    for(let i = 0; i < numero_linhas; i++){
-        linha = "<tr>";
-        for(let j = 0; j < numero_colunas; j++){
-            linha += `<td contenteditable='true' id= "${i}${j}"></td>`;
-        }
-        $("#table").append(linha + "</tr>");
-
-    }
-
-    // gera os Vs e Fs nas colunas dos símbolos
-    for (let i = 0 ; i< numero_linhas ; i++) {
-        for (let j = (parseInt(numero_simbolos) - 1), auxiliar = 0 ; j >= 0 ; j--, auxiliar++) {
-            $(`#${i}${auxiliar}`).html(parseInt((i/parseInt(Math.pow(2, j)))%2) ? "F" : "T")
-        }
-    }
-    
-}
-
-function converte_tabela_html_em_matriz()
-{
-
-
-    matriz = new Array(numero_linhas); 
-    for (let i = 0; i < numero_linhas; i++) 
-        matriz[i] = new Array(numero_colunas);
-   
-    for(let i = 0; i < numero_linhas; i++){
-        for(let j = 0; j < numero_colunas; j++){
-            
-            matriz[i][j] =  $(`#${i}${j}`)[0].innerHTML.trim();
-
-        }
-    }
-    console.log(matriz)
-
-
-    for(let j = 0; j < numero_simbolos; j++){
-        simbolos_cabecalho.push($(`#${j}`)[0].innerHTML);
-    }
-
-
-}
-
-
 function integracao(){
 
+    // pega o código back-end do Rafael
     const entrada = 
     [
         {"P":false,"Q":false,"PvQ":false},
@@ -148,6 +46,15 @@ function integracao(){
     numero_colunas =  Object.values(entrada[0]).length;
     simbolos_cabecalho = Object.keys(entrada[0]);
 
+    let n = numero_linhas;
+    //let numero_simbolos
+    while(n != 1){
+        n = n/2;
+        numero_simbolos += 1;
+    }
+
+    console.log('n simb -->', numero_simbolos);
+
 
     matriz = new Array(numero_linhas); 
     for (let i = 0; i < numero_linhas; i++){ 
@@ -157,6 +64,7 @@ function integracao(){
     for(let i in entrada){
         matriz[i] = Object.values(entrada[i]);
     }
+
     for(let i = 0; i < numero_linhas; i++){
         for(let j = 0; j < numero_colunas; j++){
             
@@ -164,18 +72,39 @@ function integracao(){
         }
     }
 
+}
 
-    console.log('matriz --->' , matriz)
-    console.log('simbolos cabecalho -->', simbolos_cabecalho);
-    console.log('n linhas', numero_linhas  );
-    console.log('n col ->', numero_colunas  );
+
+
+function desenha_tabela(){
+
+  //  integracao();
+
+    $('#tabela_inicial').remove(); // remove a tabela inicial
+
+    let linha;
+
+    // monta o header da tabela
+    for(let i in simbolos_cabecalho){
+        linha += `<th contenteditable='true' id ='${i}'>${simbolos_cabecalho[i]}</th>`;
+    }
+
+    $("#header").append(linha);
+
+    // desenha as linhas da tabela
+    for(let i = 0; i < numero_linhas; i++){
+        linha = "<tr>";
+        for(let j = 0; j < numero_colunas; j++){
+            linha += `<td contenteditable='true' id= "${i}${j}"> ${matriz[i][j]} </td>`;
+        }
+        $("#table").append(linha + "</tr>");
+    }
+
 
 }
 
 
 function gera_formulas_normais(){
-
-    converte_tabela_html_em_matriz();
 
     //Verifica se existe funcao gerada
     if (funcao_gerada == true)
