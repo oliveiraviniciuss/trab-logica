@@ -10,62 +10,63 @@
     <title>Geração FND/FNC</title>
     <meta charset="utf-8">
   </head>
-  <body>
+  <body style="text-align:center">
 
     <header class="cabecalho">
         <h1>Geração de Fórmulas FND/FNC</h1>
     </header>
     
     <aside class="campos">
-        <label>Digite a quantidade de simbolos proposicionais:</label><br>
-        <input type="number" id="simbolos" name="line">
-        <br>
-        <label>Digite a quantidade de conectivos proposicionais:</label><br>
-        <input type="number" id="conectivos" name="col">    
-        <br>
-        <button onclick="calcula_tamanho_tabela()">GERAR TABELA</button><br><br>
+        <div class="entrada" id="entrada">
+            <label>Digite a quantidade de simbolos proposicionais:</label><br>
+            <input type="number" id="simbolos" name="line">
+            <br>
+            <label>Digite a quantidade de conectivos proposicionais:</label><br>
+            <input type="number" id="conectivos" name="col">    
+            <br>  
+            <button class= "btn gera" onclick="calcula_tamanho_tabela()">GERAR TABELA</button><br><br>
+        </div>
+        <div class="saida" id="saida">
+            <label>Fórmula Normal Disjuntiva (FND):</label>
+            <div id="formula_normal_disjuntiva" >
+            </div>
 
-
-        <label>Fórmula Normal Disjuntiva (FND):</label>
-        <div id="formula_normal_disjuntiva" >
+            <label>Fórmula Normal Conjuntiva (FNC):</label>
+            <div id="formula_normal_conjuntiva" >
+            </div>
         </div>
 
-        <label>Fórmula Normal Conjuntiva (FNC):</label>
-        <div id="formula_normal_conjuntiva" >
-        </div>
-
-    </aside>
-
-    <main class= "main_tabela">      
-        <table id="table">
+    </aside>        
+    <main  class= "main_tabela" id="main_tabela">      
+        <table id="table" align="center">
             <thead>
                 <tr id="header"></tr>
             </thead>    
         </table>
-
-        <table id= "tabela_inicial">
-          <tr>
-            <th>P</th>
-            <th>Q</th>
-            <th>--</th>
-          </tr>
-          <tr>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-          </tr>
-          <tr>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-          </tr>
-        </table>
-
+        <div class= "inicial">
+            <table id= "tabela_inicial" align="center"> 
+              <tr>
+                <th>P</th>
+                <th>Q</th>
+                <th>--</th>
+              </tr>
+              <tr>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+            </table>
+        </div>
          <!-- <button onclick="converte_tabela_html_em_matriz()">GERAR MATRIZ</button> -->
         <br>
-        <button onclick="gera_formulas_normais()">GERAR FÓRMULAS</button>
+        <button class="btn formula" onclick="gera_formulas_normais()">GERAR FÓRMULAS</button>
         
-        <button onclick="limpar_tela()">LIMPAR TELA</button>
+        <button class="btn limpar" onclick="limpar_tela()">LIMPAR TELA</button>
 
     </main>
     

@@ -1,19 +1,25 @@
 table, th, td {
   border: 1px solid black;
+  text-align:center;
 }
 
 table th, td {
+    background-color: rgb(255,255,255);
+    table-layout: fixed;
+    text-align:center;
     width: 100px;
     height: 50px;
     display: inline-block;
 }
 
 body {
-  display: grid;
-  grid-template-areas:
-    "header header header"
-    "aside main main"
-    "footer footer footer";
+    background-color: rgba(0,0,0,0.5);
+    display: grid;
+    grid-template-areas:
+        "header header header"
+        "aside aside aside"
+        "main main main"
+        "footer footer footer";
 }
 
 .cabecalho {
@@ -21,13 +27,36 @@ body {
 }
 
 .campos {
-  grid-area: aside;
+    grid-area: aside;
+  
+}
+
+.inicial{
+    display:none;
 }
 
 .main_tabela {
-  grid-area: main;
+    display:none;
+    grid-area: main;
+}
+
+.saida{
+    display:none;
 }
 
 .rodape {
   grid-area: footer;
+}
+
+
+.btn {
+    border:1px solid #25692A;
+    border-radius:4px;
+    display:inline-block;
+    cursor:pointer;
+    font-family:Verdana;
+    font-weight:bold;
+    font-size:13px;
+    padding:6px 10px;
+    text-decoration:none;
 }
