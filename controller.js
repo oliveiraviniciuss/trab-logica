@@ -3,7 +3,7 @@
 let numero_colunas; 
 let numero_linhas;
 let numero_simbolos = 0;
-let numero_conectivos;
+
 let numero_coluna_auxiliar;
 let numero_linha_auxiliar;
 
@@ -49,26 +49,28 @@ async function integracao(){
     
     response = await response.json();
 
-
-    const entrada = response.rows;
-    
     console.log(response);
 
-    numero_linhas = entrada.length;
-    numero_colunas =  Object.values(entrada[0]).length;
-    simbolos_cabecalho = Object.keys(entrada[0]);
+    const cabecalho = response.header;
+    const linhas_tabela = response.rows;
+
+    numero_colunas =  cabecalho.length;
+    numero_linhas = linhas_tabela.length;
+
+    simbolos_cabecalho = cabecalho.map( (simbolo)=>{
+        return simbolo.value;
+    });
 
     let n = numero_linhas;
-
     while(n != 1){
         n = n/2;
         numero_simbolos += 1;
     }
 
     matriz = new Array(numero_linhas); 
-    for(let i in entrada){
+    for(let i in linhas_tabela){
         matriz[i] = new Array(numero_colunas);
-        matriz[i] = Object.values(entrada[i]);
+        matriz[i] = Object.values(linhas_tabela[i]);
     }
 
     for(let i = 0; i < numero_linhas; i++){
