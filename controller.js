@@ -20,9 +20,9 @@ function limpar_tela()
     return;
 }
 
-function gera_tabela(){
+async function gera_tabela(){
 
-    integracao();
+    await integracao();
   
     //Desenha a matriz
     desenha_tabela()
@@ -31,20 +31,28 @@ function gera_tabela(){
 }
 
 
-function integracao(){
+async function integracao(){
 
-    // pega o código back-end do grupo do Rafael
-    const entrada = 
-    [
-        {"P":true,"Q":true, "R":true, "(P->Q)": true, "(P->Q)^R":true},
-        {"P":true,"Q":true, "R":false, "(P->Q)": true, "(P->Q)^R":false},
-        {"P":true,"Q":false, "R":true, "(P->Q)": false, "(P->Q)^R":false},
-        {"P":true,"Q":false, "R":false, "(P->Q)": false, "(P->Q)^R":false},
-        {"P":false,"Q":true, "R":true, "(P->Q)": true, "(P->Q)^R":true},
-        {"P":false,"Q":true, "R":false, "(P->Q)": true, "(P->Q)^R":false},
-        {"P":false,"Q":false, "R":true, "(P->Q)": true, "(P->Q)^R":true},
-        {"P":false,"Q":false, "R":false, "(P->Q)": true, "(P->Q)^R":false}
-    ];
+    // Faz a requisição à API do grupo do Rafael
+    const expressao = $('#expressao').val() 
+
+    let response =  await fetch(`https://truthtablegenerator2000-ramon.rj.r.appspot.com/truthTable?expression=${expressao}`, {
+        method: 'get',
+        headers: new Headers({'content-type': 'application/x-www-form-urlencoded'}) 
+        });
+
+    
+    if (!response.ok) {
+        alert('Erro de sintaxe');
+        return;
+    }
+    
+    response = await response.json();
+
+
+    const entrada = response.rows;
+    
+    console.log(response);
 
     numero_linhas = entrada.length;
     numero_colunas =  Object.values(entrada[0]).length;
