@@ -40,9 +40,8 @@ async function integracao(){
         method: 'get',
         headers: new Headers({'content-type': 'application/x-www-form-urlencoded'}) 
         });
-
     
-    if (!response.ok) {
+    if (response.status != 200) {
         alert('Erro de sintaxe');
         return;
     }
