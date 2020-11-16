@@ -34,20 +34,22 @@ async function gera_tabela(){
 async function integracao(){
 
     // Faz a requisição à API do grupo do Rafael
-    const expressao = $('#expressao').val() 
+    const expressao = $('#formula').val() 
 
     let response =  await fetch(`https://truthtablegenerator2000-ramon.rj.r.appspot.com/truthTable?expression=${expressao}`, {
         method: 'get',
         headers: new Headers({'content-type': 'application/x-www-form-urlencoded'}) 
         });
     
+        
     if (response.status != 200) {
-        alert('Erro de sintaxe');
+        
+        response = await response.json();
+        alert(response.message);
         return;
     }
     
     response = await response.json();
-
     console.log(response);
 
     const cabecalho = response.header;
