@@ -4,14 +4,10 @@ let numero_colunas;
 let numero_linhas;
 let numero_simbolos = 0;
 
-let numero_coluna_auxiliar;
-let numero_linha_auxiliar;
-
 let matriz = null;
 let simbolos_cabecalho= [];
 
-let matriz_desenhada = false;
-let matriz_gerada = false;
+let tabela_desenhada = false;
 let funcao_gerada = false
 
 function limpar_tela()
@@ -22,12 +18,19 @@ function limpar_tela()
 
 async function gera_tabela(){
 
-    await integracao();
+    if(tabela_desenhada){
+        return;
+    }
+
+    const sucesso_integracao = await integracao();
+
+    if(!sucesso_integracao){
+        return;
+    }
   
-    //Desenha a matriz
     desenha_tabela()
     document.getElementById('main_tabela').style.display = 'block';
-    matriz_desenhada = true;
+    tabela_desenhada = true;
 }
 
 
@@ -46,7 +49,7 @@ async function integracao(){
         
         response = await response.json();
         alert(response.message);
-        return;
+        return false;
     }
     
     response = await response.json();
@@ -82,13 +85,13 @@ async function integracao(){
 
     console.log('SÍMBOLOS E SUBFÓRMULAS : ', simbolos_cabecalho); // valores que serão exibidos no header da tabela verdade
     console.log('MATRIZ : ', matriz); // valores da tabela verdade
+
+    return true;
 }
 
 
 
 function desenha_tabela(){
-
-  //  integracao();
 
     $('#tabela_inicial').remove(); // remove a tabela inicial
 
@@ -136,13 +139,13 @@ function gera_formulas_normais(){
         {
             if (`${$(`#${j}`)[0].innerHTML.trim()}` === "")
             {
-                alert('Por favor, preencha corretamente o cabeçalho!')
+                alert('Cabeçalho não preenchido!')
                 return;
             }
 
             if (matriz[i][j].toLowerCase() !== 't' && matriz[i][j].toLowerCase() !== 'f' )
             {
-                alert('Por favor, preencha a tabela com somente "t", "T", "f" ou "F" unicamente em cada célula!')
+                alert('Célula preenchida de forma inválida!')
                 return;
             }
         }
