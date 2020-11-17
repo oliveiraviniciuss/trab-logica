@@ -2,34 +2,69 @@
      <a href="#" > Geração de Fórmulas FND/FNC </a>
 </h1>
 <h3 align="center">
-    Projeto feito para a Disciplina de Lógica para Computação da Universidade Federal Rural do Rio de Janeiro
+    Projeto proposto durante a Disciplina de Lógica para Computação no período de 2020.5 oferecida pela Universidade Federal Rural do Rio de Janeiro.
 </h3>
-
-<h4 align="center"> 
-	🚧  Em construção...  🚧
-</h4>
 
 Tabela de conteúdos
 =================
 <!--ts-->
    * [Sobre o projeto](#-sobre-o-projeto)
-   * [Funcionalidades](#-funcionalidades)
+   * [Como executar](#%EF%B8%8F-como-executar)
+   * [Como usar](#%EF%B8%8F-como-usar)
    * [Contribuidores](#-contribuidores)
+   * [Agradecimentos](#-agradecimentos)
    * [Como contribuir no projeto](#-como-contribuir-no-projeto)
    * [Licença](#user-content--licença)
 <!--te-->
 
+---
 
 ## 💻 Sobre o projeto
 
-Projeto desenvolvido durante a Disciplina de Lógica para Computação no periodo de 2020.5 oferecida pela Universidade Federal Rural do Rio de Janeiro.
----
+O objetivo do projeto é construir, a partir de uma tabela verdade de uma fórmula, uma ferramenta que apresente a Fórmula Normal Conjuntiva e Disjuntiva em relação à fórmula original.<br>
 
-## ⚙️ Funcionalidades
+Os detalhes da implementação da geração da tabela verdade a partir de uma dada string de expressão lógica pelo usuário podem ser encontrados <a href="https://github.com/RamonMachado/truthTableGenerator">aqui</a>
 
 - [x] Os usuários tem acesso ao aplicativo web, onde podem:
-  - [x] Construir a tabela verdade.
-  - [x] Gerar as fórmulas FND(Fórmula Normal Disjuntiva) e FNC (Fórmula Normal Conjuntiva)
+   - [x] Construir a tabela verdade.
+   - [x] Gerar Fórmula Normal Disjuntiva (FND) e Fórmula Normal Conjuntiva (FNC).
+
+---
+
+## ▶️ Como executar
+
+1. Clone o repositório para sua máquina
+<br>`
+git clone https://github.com/oliveiraviniciuss/trab-logica
+`
+
+2. Na pasta do projeto, mude a branch para integracao_tabela_verdade
+<br>`
+git checkout integracao_tabela_verdade
+`
+
+3. Execute o arquivo "index.html"
+
+---
+
+## ⌨️ Como usar
+Digite a expressão lógica e clique em "Gerar Tabela Verdade".
+
+Regras:
+- [x] Variáveis precisam ser maiúsculas.
+- [x] Variáveis podem ter nomes de A a Z, com a exceção da letra V (Símbolo representativo do operador “OR”).
+- [x] A prioridade de interpretação será sempre da direita para a esquerda.
+- [x] É necessário colocar parênteses para definir prioridades:
+  - [x] A^BvC - ERRADO
+  - [x] (A^B)vC - CERTO
+  
+Operadores:
+- [x] AND: ^
+- [x] OR: v
+- [x] IMPLIES: ->
+- [x] IF AND ONLY IF: <->
+- [x] NOT: ~
+
 
 ---
 
@@ -49,6 +84,21 @@ Projeto desenvolvido durante a Disciplina de Lógica para Computação no period
     <td align="center"></td>   
   </tr>
 </table>
+
+---
+## 👏 Agradecimentos
+
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/RamonMachado"><img style="border-radius: 50%;" src="https://avatars3.githubusercontent.com/u/19560225?s=400&u=542ae0b0efdac0586a0687d7494830e15792b1e8&v=4" width="100px;" alt=""/><br /><sub><b>Ramon Machado</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/RafaelLDSX"><img style="border-radius: 50%;" src="https://avatars0.githubusercontent.com/u/19434605?s=400&u=d7263ba4290052d14259799a16b3b5f3f9120239&v=4" width="100px;" alt=""/><br /><sub><b>Rafael Lemos</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/MarcioMed07"><img style="border-radius: 50%;" src="https://avatars2.githubusercontent.com/u/19434598?s=400&u=95d1f8adf29dbbe1bd350392d1c376cb64985c07&v=4" width="100px;" alt=""/><br /><sub><b>Marcio Medeiros</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/D8989"><img style="border-radius: 50%;" src="https://avatars3.githubusercontent.com/u/20309537?s=400&u=f61691f100e912121ad9f651b4fe61e732046b1c&v=4" width="100px;" alt=""/><br /><sub><b>Daniel Moreira</b></sub></a><br /></td>   
+  </tr>
+ 
+</table>
+
+---
 
 ## 💪 Como contribuir no projeto
 
