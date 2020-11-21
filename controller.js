@@ -30,6 +30,7 @@ async function gera_tabela(){
   
     desenha_tabela()
     document.getElementById('main_tabela').style.display = 'block';
+    document.getElementById('regras').style.display = 'none';
     tabela_desenhada = true;
 }
 
@@ -108,7 +109,10 @@ function desenha_tabela(){
     for(let i = 0; i < numero_linhas; i++){
         linha = "<tr>";
         for(let j = 0; j < numero_colunas; j++){
-            linha += `<td contenteditable='true' id= "${i}${j}"> ${matriz[i][j]} </td>`;
+            if(matriz[i][j] == "T")
+                linha += `<td contenteditable='true' style="background-color:#98e698" id= "${i}${j}"> ${matriz[i][j]} </td>`;
+            else
+                linha += `<td contenteditable='true' style="background-color:#ff6666" id= "${i}${j}"> ${matriz[i][j]} </td>`;
         }
         $("#table").append(linha + "</tr>");
     }

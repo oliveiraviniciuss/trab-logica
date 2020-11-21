@@ -23,6 +23,28 @@
             <br>
             <button class= "btn gera" onclick="gera_tabela()">GERAR TABELA</button><br><br>
         </div>
+        <div class="regras" id="regras">
+          <h1>Como Usar</h1>
+          <p>Digite a expressão lógica em clique em "Gerar Tabela"</p>
+          <h2>Regras:</h2>
+          <ul>
+            <li>Variáveis precisam ser maiúsculas.</li>
+            <li>Variáveis podem ter nomes de A a Z, com a exceção da letra V (Símbolo representativo do operador “OR”).</li>
+            <li>A prioridade de interpretação será sempre da direita para a esquerda.</li>
+            <li><dt>É necessário colocar parênteses para definir prioridades:</dt>
+                  <dd>A^BvC - ERRADO</dd>
+                  <dd>(A^B)vC - CERTO</dd>
+                </li>
+          </ul>
+          <h2>Operadores:</h2>
+          <ul>
+            <li>AND: ^</li>
+            <li>OR: v</li>
+            <li>IMPLIES: -></li>
+            <li>IF AND ONLY IF: <-></li>
+            <li> NOT: ~</li>
+          </ul>
+      </div>
         <div class="saida" id="saida">
             <label>Fórmula Normal Disjuntiva (FND):</label>
             <div id="formula_normal_disjuntiva" >
