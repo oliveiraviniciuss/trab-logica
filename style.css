@@ -3,7 +3,7 @@ table, th, td {
   text-align:center;
 }
 
-table th, td {
+/* table th, td {
     background-color: rgb(255,255,255);
     table-layout: fixed;
     text-align:center;
@@ -11,6 +11,30 @@ table th, td {
     height: 50px;
     display: inline-block;
 }
+
+table {
+    margin-left: 100px;
+    margin-right: 100px;
+} */
+
+table {
+    background-color: rgb(255,255,255);
+    table-layout: fixed;
+    width: 70%;
+  }
+  
+  td {
+    background-color: rgb(255,255,255);
+    width: 100px;
+    height: 50px;
+    overflow: hidden;
+    font-weight:bold;
+  }
+
+  th {
+    background-color: rgb(220,220,220);
+    height: 50px;
+  }
 
 body {
     background-color: rgba(0,0,0,0.5);
@@ -20,6 +44,12 @@ body {
         "aside aside aside"
         "main main main"
         "footer footer footer";
+}
+
+ul li {
+    text-align:center;
+    white-space:nowrap;
+    list-style-position: outside;
 }
 
 .cabecalho {
